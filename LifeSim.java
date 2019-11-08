@@ -16,16 +16,19 @@ import javax.swing.JPanel;
  * @author jword
  */
 public class LifeSim extends JPanel {
-    Gremlin[] population = new Gremlin[30];
+    Gremlin[] population = new Gremlin[400];
     Gremlin[][] spaces = new Gremlin[20][20];
     
     //Constructor for World, LifeSim
     public LifeSim() {
-        //Use for loop to make 15
-        
-        Gremlin newGremlin = new Gremlin();
-        population[0] = newGremlin;
-        spaces[10][10] = newGremlin;
+        //Use for loop to make 400
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                Gremlin newGremlin = new Gremlin();
+                population[i * 20 + j] = newGremlin;
+                spaces[i][j] = newGremlin;
+            }
+        }
         
     }
     
@@ -34,9 +37,13 @@ public class LifeSim extends JPanel {
         super.paintComponent(g);
         this.setBackground(Color.DARK_GRAY);
         //Use for loop to draw all spaces
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (spaces[i][j] == null) continue;
+                spaces[i][j].draw(g, j*40, i*40);
+            }
+        }
         
-        if (spaces[0][0] == null) continue;
-        spaces[10][10].draw(g, 100, 100);
         
     }    
     

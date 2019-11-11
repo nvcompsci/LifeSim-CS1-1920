@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -18,9 +20,11 @@ import javax.swing.JPanel;
 public class LifeSim extends JPanel {
     Gremlin[] population = new Gremlin[400];
     Gremlin[][] spaces = new Gremlin[20][20];
+    Timer timer = new Timer();
     
     //Constructor for World, LifeSim
     public LifeSim() {
+        timer.scheduleAtFixedRate(new Task(), 100, 1000/24);
         //Use for loop to make 400
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -30,6 +34,13 @@ public class LifeSim extends JPanel {
             }
         }
         
+    }
+    
+    private class Task extends TimerTask {
+        @Override
+        public void run() {
+            repaint();
+        }
     }
     
     @Override

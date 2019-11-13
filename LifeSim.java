@@ -51,7 +51,7 @@ public class LifeSim extends JPanel {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 if (spaces[i][j] == null) continue;
-                spaces[i][j].update(spaces);
+                spaces[i][j].update(spaces, j, i);
                 spaces[i][j].draw(g, j*40, i*40);
             }
         }

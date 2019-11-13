@@ -44,16 +44,20 @@ public class Gremlin {
     }
     
     private void lookAround(Gremlin[][] world, int x, int y) {
-        if (world[x][y] != null) {
-            if ( /*same species?*/) {
-                
+        for (int a = -1; a <= 1; a++) {         
+            for (int b = -1; b <=1; b++) {
+                if (world[y+a][x+b] != null) {
+                    if (this.species.equals(world[y+a][x+b].species)) {
+                        System.out.println("explain here");
+                    }
+                    else {
+//2
+                    }
+                }
+                else {
+//3
+                }
             }
-            else {
-                
-            }
-        }
-        else {
-            
         }
     }
     

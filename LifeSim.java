@@ -24,7 +24,7 @@ public class LifeSim extends JPanel {
     
     //Constructor for World, LifeSim
     public LifeSim() {
-        timer.scheduleAtFixedRate(new Task(), 100, 1000/24);
+        timer.scheduleAtFixedRate(new Task(), 100, 1000/6);
         //Use for loop to make 400
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -51,6 +51,7 @@ public class LifeSim extends JPanel {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 if (spaces[i][j] == null) continue;
+                spaces[i][j].update(spaces);
                 spaces[i][j].draw(g, j*40, i*40);
             }
         }

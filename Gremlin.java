@@ -32,11 +32,48 @@ public class Gremlin {
         }
     }
     
+    public void update(Gremlin[][] world, int x, int y) {
+        //make Gremlin get older
+        this.age++;
+        if (age > 85) {
+            this.size = 0;
+        }
+        //get smaller over time
+        this.size -= 0.05;
+        lookAround(world, x, y);
+    }
+    
+    private void lookAround(Gremlin[][] world, int x, int y) {
+        if (world[x][y] != null) {
+            if ( /*same species?*/) {
+                
+            }
+            else {
+                
+            }
+        }
+        else {
+            
+        }
+    }
+    
+    private void move() {
+        
+    }
+    
+    private void reproduce() {
+        
+    }
+    
+    private void attack() {
+        
+    }
+    
     public void draw(Graphics g, int x, int y) {
         if (this.species.equals("gerb")) {
-            g.setColor(Color.PINK);
+            g.setColor(Color.RED);
         } else {
-            g.setColor(Color.YELLOW);
+            g.setColor(Color.GREEN);
         }
         g.fillOval(x, y, this.size, this.size);
     }

@@ -39,23 +39,27 @@ public class Gremlin {
             this.size = 0;
         }
         //get smaller over time
-        this.size -= 0.05;
+        //this.size -= 0.05;
         lookAround(world, x, y);
     }
     
     private void lookAround(Gremlin[][] world, int x, int y) {
-        for (int a = -1; a <= 1; a++) {         
+        for (int a = -1; a <= 1; a++) {            
             for (int b = -1; b <=1; b++) {
+                if (x + b < 0 || x + b >= 20 || y + a < 0 || y + a >= 20) continue;
+                //if (y + a < 0) continue;
                 if (world[y+a][x+b] != null) {
                     if (this.species.equals(world[y+a][x+b].species)) {
-                        System.out.println("explain here");
+                        System.out.println("same species");                        
                     }
                     else {
-//2
+                        System.out.println("different species");
+                        this.attack();
                     }
                 }
                 else {
-//3
+                    System.out.println("empty");
+                    this.reproduce();
                 }
             }
         }
